@@ -33,7 +33,7 @@ namespace JsonReaderYugi
                     Console.WriteLine(pathSmallCards);
 
                 }
-            }
+            
             while ((Line = ReaderObject.ReadLine()) != null)
                 {
                     getJasonFromApiCard(Line);
