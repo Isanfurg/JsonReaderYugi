@@ -21,7 +21,20 @@ namespace JsonReaderYugi
             {
                 string Line;
                 // ReaderObject reads a single line, stores it in Line string variable and then displays it on console
-                while ((Line = ReaderObject.ReadLine()) != null)
+                if (!Directory.Exists(pathCards))
+                {
+                    Directory.CreateDirectory(pathCards);
+                    Console.WriteLine(pathCards);
+
+                }
+                if (!Directory.Exists(pathSmallCards))
+                {
+                    Directory.CreateDirectory(pathSmallCards);
+                    Console.WriteLine(pathSmallCards);
+
+                }
+            }
+            while ((Line = ReaderObject.ReadLine()) != null)
                 {
                     getJasonFromApiCard(Line);
                     client = new();
