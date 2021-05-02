@@ -49,7 +49,7 @@ namespace JsonReaderYugi
         private void getJasonFromApiCard(String id)
         {
             Card card = new();
-            String url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?id=" + id;
+            String url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?name=" + id;
             String myJson = client.DownloadString(url);
             var file = Newtonsoft.Json.JsonConvert.DeserializeObject(myJson);
             //get values from data in json file
@@ -71,11 +71,24 @@ namespace JsonReaderYugi
                 String nameF = (String)name.Value;
                 String typeF = (String)type.Value;
                 String descF = (String)desc.Value;
-                int atkF = (int)atk.Value;
-                int defF = (int)def.Value;
-                int levelF = (int)level.Value;
-                String raceF = (String)race.Value;
-                String attributeF = (String)attribute.Value;
+                int atkF = -1;
+                int defF = -1;
+                int levelF = -1;
+                String raceF = "";
+                String attributeF = "";
+            
+                try {
+                    atkF = (int)atk.Value;
+                    defF = (int)def.Value;
+                    levelF = (int)level.Value;
+                    raceF = (String)race.Value;
+                    attributeF = (String)attribute.Value;
+                }
+                catch (NullReferenceException e)
+                {
+                    //if (e.Source != null)
+                        //Console.WriteLine("IOException source: {0}", e.Source);
+                }
                 JArray card_imagesF = (JArray)card_images.Value;
                 String cardUrl = "";
                 String smallCardUrl = "";
@@ -96,7 +109,7 @@ namespace JsonReaderYugi
                 break;
             }
             
-            Console.WriteLine("Card ID " + id + " has been charged.");
+            Console.WriteLine("Card : " + id + " has been charged.");
         }
 
     
