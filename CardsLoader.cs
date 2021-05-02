@@ -15,7 +15,7 @@ namespace JsonReaderYugi
         WebClient client = new();
         List<Card> ListOfcards = new List<Card>();
 
-        public void StartDownload(string path)
+        public List<Card> StartDownload(string path)
         {
             using (StreamReader ReaderObject = new StreamReader(path))
             {
@@ -42,7 +42,7 @@ namespace JsonReaderYugi
                 Console.WriteLine("Se guardaron las cartas");
                 Serializator.SerializeCards(ListOfcards);
             }
-
+            return ListOfcards;
 
         }
 
@@ -116,11 +116,18 @@ namespace JsonReaderYugi
 
         public void saveImage(String imgUrl, String id)
     {
-        client.DownloadFile(new Uri(imgUrl), pathCards + id + ".jpg");
+            if (!File.Exists(pathCards + id + ".jpg"))
+            {
+                client.DownloadFile(new Uri(imgUrl), pathCards + id + ".jpg");
+            }
+            
     }
         public void saveImageSmall(String imgUrl, String id)
         {
-            client.DownloadFile(new Uri(imgUrl), pathSmallCards + id + ".jpg");
+            if (!File.Exists(pathCards + id + ".jpg"))
+            {
+                client.DownloadFile(new Uri(imgUrl), pathSmallCards + id + ".jpg");
+            }
         }
     }
 

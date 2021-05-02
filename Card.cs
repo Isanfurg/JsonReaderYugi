@@ -1,25 +1,23 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JsonReaderYugi
-{
-    class Card
+{   
+    [Serializable]
+    public class Card
     {
-        private String name;
-        private String type;
-        private String desc;
-        private int def;
-        private int atk;
-        private int level;
-        private String race;
-        private String attribute;
-        private String smallCardUrl;
-        private String cardUrl;
-        private String id;
+        public String name;
+        public String type;
+        public String desc;
+        public int def;
+        public int atk;
+        public int level;
+        public String race;
+        public String attribute;
+        public String smallCardUrl;
+        public String cardUrl;
+        public String id;
         public Card()
         {
 
@@ -81,22 +79,8 @@ namespace JsonReaderYugi
                    CardUrl == card.CardUrl;
         }
 
-        public override int GetHashCode()
-        {
-            HashCode hash = new HashCode();
-            hash.Add(Name);
-            hash.Add(Type);
-            hash.Add(Desc);
-            hash.Add(Def);
-            hash.Add(Atk);
-            hash.Add(Level);
-            hash.Add(Race);
-            hash.Add(Attribute);
-            hash.Add(SmallCardUrl);
-            hash.Add(CardUrl);
-            return hash.ToHashCode();
-        }
-
 
     }
+
+
 }

@@ -1,23 +1,29 @@
 ﻿using System;
 using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+
 using System.Collections.Generic;
+using Newtonsoft.Json;
+
 namespace JsonReaderYugi
 {
     class Serializator
     {
+
+
+  
         public static void SerializeCards(List<Card> CardsList)
         {
-            string jsonString = JsonSerializer.Serialize(CardsList);
+
+            string jsonString = JsonConvert.SerializeObject(CardsList, Formatting.Indented);
             File.WriteAllText("cards.dat", jsonString);
         }
-        public static List<Card> DeserializeCards(String path)
+        public static void SerializeDeck(Deck deck,String fileName)
         {
-            List<Card> ListOfCards;
-            String jsonString = File.ReadAllText(path);
-            ListOfCards = JsonSerializer.Deserialize<List<Card>>(jsonString);
-            return ListOfCards;
+
+            string jsonString = JsonConvert.SerializeObject(deck, Formatting.Indented);
+            Console.WriteLine(jsonString);
+            File.WriteAllText(fileName+".dat", jsonString);
+            Console.WriteLine("Deck " + fileName + " Serializado Exitosamente!");
         }
     }
 }

@@ -12,7 +12,7 @@ Mystic Horseman
 Terra the Terrible
 Dark Titan of Terror
 Dark Assailant
-Master & Expert
+Master %26 Expert
 Unknown Warrior of Fiend
 Mystic Clown
 Ogre of the Black Shadow
@@ -35,5 +35,5 @@ The Inexperienced Spy
 Reinforcements
 Ancient Telescope
 Just Desserts
-Lord of D
+Lord of D.
 The Flute of Summoning Dragon
