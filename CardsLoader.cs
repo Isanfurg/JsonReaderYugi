@@ -17,9 +17,11 @@ namespace JsonReaderYugi
 
         public List<Card> StartDownload(string path)
         {
+           
             using (StreamReader ReaderObject = new StreamReader(path))
             {
                 string Line;
+                ListOfcards = new List<Card>();
                 // ReaderObject reads a single line, stores it in Line string variable and then displays it on console
                 if (!Directory.Exists(pathCards))
                 {
@@ -124,7 +126,7 @@ namespace JsonReaderYugi
     }
         public void saveImageSmall(String imgUrl, String id)
         {
-            if (!File.Exists(pathCards + id + ".jpg"))
+            if (!File.Exists(pathSmallCards + id + ".jpg"))
             {
                 client.DownloadFile(new Uri(imgUrl), pathSmallCards + id + ".jpg");
             }

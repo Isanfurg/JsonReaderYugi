@@ -13,20 +13,23 @@ namespace JsonReaderYugi
     {
         static void Main(string[] args)
         {
-            //String path = @"C:\Users\Isanfurg\Documents\C#\JsonReaderYugi\CardsID.txt";
+            String path = @"C:\Users\Isanfurg\Documents\C#\JsonReaderYugi\CardsID.txt";
             CardsLoader cLoader = new CardsLoader();
-            //cLoader.StartDownload(path);
-
+            cLoader.StartDownload(path);
+            List<Card> cardList = cLoader.StartDownload(path);
+            Serializator.SerializeCards(cardList);
             String path1 = @"C:\Users\Isanfurg\Documents\C#\JsonReaderYugi\YugiDeck.txt";
             Deck deck1 = new Deck();
             deck1.Id = "1";
             deck1.Name = "Yugi";
             List<Card> deck1List = cLoader.StartDownload(path1);
+           
             foreach(Card card in deck1List)
             {
                 deck1.CardList.Add(card.Id);
             }
-
+            Console.WriteLine(deck1List.Count);
+            Serializator.SerializeDeck(deck1, "DeckYugi");
             String path2 = @"C:\Users\Isanfurg\Documents\C#\JsonReaderYugi\DeckJoey.txt";
             Deck deck2 = new Deck();
             deck2.Id = "2";
@@ -36,6 +39,8 @@ namespace JsonReaderYugi
             {
                 deck2.CardList.Add(card.Id);
             }
+            Serializator.SerializeDeck(deck2, "DeckJoey");
+
 
             String path3 = @"C:\Users\Isanfurg\Documents\C#\JsonReaderYugi\DeckKaiba.txt";
             Deck deck3 = new Deck();
@@ -46,11 +51,11 @@ namespace JsonReaderYugi
             {
                 deck3.CardList.Add(card.Id);
             }
-            Serializator.SerializeDeck(deck1,"DeckYugi");
+            Serializator.SerializeDeck(deck3, "DeckKaiba");
 
-            Serializator.SerializeDeck(deck2,"DeckJoey");
 
-            Serializator.SerializeDeck(deck3,"DeckKaiba");
+
+
         }
     }
 }

@@ -16,6 +16,7 @@ namespace JsonReaderYugi
 
             string jsonString = JsonConvert.SerializeObject(CardsList, Formatting.Indented);
             File.WriteAllText("cards.dat", jsonString);
+            Console.WriteLine("Lista de Cartas Serializada Exitosamente!");
         }
         public static void SerializeDeck(Deck deck,String fileName)
         {
